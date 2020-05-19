@@ -9,6 +9,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const db = require("./db");
+const iotg = require("./iotg");
 
 const app = express();
 
@@ -24,7 +25,11 @@ app.use(express.static(path.join(__dirname, "public")));
 //  adding routes
 require("./routes")(app);
 
-app.on("ready", () => {
+app.on("db-ready", () => {
+  iotg.connect(app);
+});
+
+app.on("iotg-ready", () => {
   app.listen(3000, () => {
     console.log("Server is up on port", 3000);
   });

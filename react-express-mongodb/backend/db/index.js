@@ -21,7 +21,7 @@ exports.connect = (app) => {
       .connect(process.env.MONGODB_URI, options)
       .then(() => {
         console.log("MongoDB is connected");
-        app.emit("ready");
+        app.emit("db-ready");
       })
       .catch((err) => {
         console.log("MongoDB connection unsuccessful, retry after 2 seconds.");
