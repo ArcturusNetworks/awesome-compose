@@ -16,7 +16,6 @@ services:
       - backend
 
   backend:
-    stdin_open: true
     container_name: backend
     restart: always
     build: backend

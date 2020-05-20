@@ -1,13 +1,13 @@
 .App {
-  text-align: center;
+  text-align: left;
 }
-.todo-app {
+.device-app {
   background-color: #efefef;
   padding: 1.2em;
-  .new-todo{
+  .new-device{
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: left;
     input{
       width: 80% !important;
     }

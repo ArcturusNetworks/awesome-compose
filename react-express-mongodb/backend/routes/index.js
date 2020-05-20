@@ -1,17 +1,18 @@
 const express = require("express");
 const serverResponses = require("../utils/helpers/responses");
 const messages = require("../config/messages");
-const { Todo } = require("../models/todos/todo");
+const { Device } = require("../models/devices/device");
 
 const routes = (app) => {
   const router = express.Router();
 
-  router.post("/todos", (req, res) => {
-    const todo = new Todo({
-      text: req.body.text,
+  router.post("/devices", (req, res) => {
+    const device = new Device({
+      DUID: req.body.DUID,
+      serviceName: req.body.serviceName
     });
 
-    todo
+    device
       .save()
       .then((result) => {
         serverResponses.sendSuccess(res, messages.SUCCESSFUL, result);
@@ -22,9 +23,9 @@ const routes = (app) => {
   });
 
   router.get("/", (req, res) => {
-    Todo.find({}, { __v: 0 })
-      .then((todos) => {
-        serverResponses.sendSuccess(res, messages.SUCCESSFUL, todos);
+    Device.find({}, { __v: 0 })
+      .then((devices) => {
+        serverResponses.sendSuccess(res, messages.SUCCESSFUL, devices);
       })
       .catch((e) => {
         serverResponses.sendError(res, messages.BAD_REQUEST, e);

@@ -5,6 +5,8 @@
   },
   "development":{
     "PORT": 3000,
-    "MONGODB_URI": "mongodb://mongo:27017/TodoApp"
+    "MONGODB_URI": "mongodb://mongo:27017/TodoApp",
+    "IOTG_HOST": "iotg.sipgear.net",
+    "IOTG_PORT": 107
   }
 }
